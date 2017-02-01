@@ -1,0 +1,1 @@
+NNET_matlab is a basic collection of functions for neural networks
