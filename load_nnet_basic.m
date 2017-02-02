@@ -34,13 +34,13 @@ satlin_prime = inline('max(0, x)>0 & max(0, x-1)==0','x');
 % b : bias vector
 % f : activation function
 % f_prime : derivative of the activation function
-% delta_W : incrment for W updates
+% delta_W : increment for W updates
 % delta_b : increment for b updates
 % X_in : input data
 % Z : intermediate data W*X_in + b 
 % X_out : layer output f(Z)
 % Diff_in : Backpropageted differenetial thorugh the layer with respect to
-% the input
+%           the input
 % Diff_out : differentials form higher level
 
 layer = struct('name', [], 'W',[], 'b', [], 'f', [], 'f_prime', [], 'grad_W', [], 'grad_b', [], 'delta_W', [], 'delta_b', [], 'X_in', [], 'Z', [], 'X_out', [],'Diff_in', [], 'Diff_out', []);
