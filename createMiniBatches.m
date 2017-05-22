@@ -1,4 +1,4 @@
-function [X_batches] = createMiniBatches(X, batchsize, seed)
+function [X_batches, smp_idx] = createMiniBatches(X, batchsize, seed)
 
 if ~exist('seed', 'var')
     rng('shuffle');
@@ -22,6 +22,7 @@ end
 n_batches = floor(N/batchsize);
 
 rnd_idx = randperm(N);
+smp_idx = reshape(rnd_idx(1:n_batches*batchsize), 1, batchsize, n_batches);
 if has_targets
     X_batches.data = zeros(X_dims, batchsize, n_batches);
     X_batches.targets = zeros(L_dims, batchsize, n_batches);
@@ -37,4 +38,3 @@ for iBtch = 1:n_batches
         X_batches(:,:,iBtch) = X(:, rnd_idx(((iBtch-1)*batchsize + 1):iBtch*batchsize));
     end
 end
-

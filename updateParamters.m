@@ -8,7 +8,7 @@ else
 end
 
 if regexp(method, 'momentum')
-    assert(length(varargin) > 0, 'Momentum must be provided');
+    assert(~isempty(varargin), 'Momentum must be provided');
     momentum = varargin{1};
 end
 

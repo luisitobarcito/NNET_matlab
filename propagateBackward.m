@@ -1,4 +1,5 @@
 function [NN] = propagateBackward(NN, Diff)
+
 NN(end).Diff_out = Diff;
 for iLyr = length(NN) : -1 : 1
     if iLyr < length(NN)
