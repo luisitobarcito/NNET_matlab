@@ -44,9 +44,9 @@ net.layers(2).grad_b = zeros(out_dim, 1);
 
 %% Train the network
 %% And Now the algorithm finally
-batchsize = 1000;
+batchsize = 100;
 n_epochs = 200;
-stepsize = 0.5;
+stepsize = 0.1;
 [X_batches] = createMiniBatches(X, batchsize);
 n_batches = size(X_batches.data, 3);
 total_cost = zeros(n_batches, n_epochs);
@@ -66,7 +66,9 @@ for iEpc = 1:n_epochs
         % compute updates for decoder networks
         net.layers = updateParamters(net.layers, stepsize, 'sgd');
         if mod(iBtch, 1)  == 0
-            gscatter(X_batches.data(1,:, iBtch), X_batches.data(2,:, iBtch), Pred_label > 0.5 )
+            net.layers = propagateForward(net.layers, X.data);
+            Pred_temp = net.layers(end).X_out;
+            gscatter(X.data(1,:), X.data(2,:), Pred_temp > 0.5 )
             xlim([-4 8])
             ylim([-4 8])
             drawnow;
