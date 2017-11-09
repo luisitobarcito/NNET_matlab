@@ -44,8 +44,8 @@ net.layers(2).grad_b = zeros(out_dim, 1);
 
 %% Train the network
 %% And Now the algorithm finally
-batchsize = 100;
-n_epochs = 200;
+batchsize = 1000;
+n_epochs = 600;
 stepsize = 0.1;
 [X_batches] = createMiniBatches(X, batchsize);
 n_batches = size(X_batches.data, 3);
